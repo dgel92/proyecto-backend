@@ -1,14 +1,5 @@
-import { __dirname } from "../path";
-import multer from "multer";
+export const errorHandler = (error, req, res, next)=>{
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, __dirname + '/public/images')
-    },
-    filename: function(req, file, cb){
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random()*1E9)
-        cb(null, fieldname + '-' + uniqueSuffix)
-    }
-})
-
-export const uploader = multer({storage})
+    const status  =error.status || 400;
+    res.status(status).send(error.message);   
+};  

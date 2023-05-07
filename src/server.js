@@ -1,4 +1,5 @@
 import { __dirname } from "./path.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 import express from "express";
 import morgan from "morgan";
 import productsRouter from "./routes/productsRouter.js";
@@ -9,6 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true }));
 app.use(morgan('dev'));
+app.use(errorHandler);
 
 app.use("/products", productsRouter);
 app.use("/users", userRouters);

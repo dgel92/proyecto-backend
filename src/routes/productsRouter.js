@@ -1,14 +1,15 @@
-import { Router } from "express";
-import {createProduct,
-        updateProduct, 
-        deleteProductById, 
-        deleteAllProducts, 
-        getAllProducts, 
-        getProductById
+import {
+        createProduct,
+        deleteAllProducts,
+        deleteProductById,
+        getAllProducts,
+        getProductById,
+        updateProduct
 } from "../manager/productsManager";
 import { productValidator, stockValidator } from "../middlewares/productValidator.js";
+
+import { Router } from "express";
 import { uploader } from "../middlewares/multer.js";
-import { updateProduct } from './../manager/productsManager';
 
 const productManager = new ProductManager("./products.json");
 const router = Router();
